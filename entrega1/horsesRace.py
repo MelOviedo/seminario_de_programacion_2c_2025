@@ -46,6 +46,11 @@ class Caballo(Thread):  #Hereda de la clase Thread
     while not self.eventoGanador.is_set():      #Mientras no haya un ganador sigue corriendo
       tiempoEspera = random.uniform(0.5, 1) #Simulación de velocidad de carrera a tiempo distintos
       time.sleep(tiempoEspera)
+
+      # Antes de avanzar, compruebo si ya hay ganador
+      if self.eventoGanador.is_set():
+        break
+
       self.distanciaRecorrida += 1           #Avanza un paso
         
       with printLock: 
@@ -56,6 +61,7 @@ class Caballo(Thread):  #Hereda de la clase Thread
           if not self.eventoGanador.is_set():
             self.ganador = True
             self.eventoGanador.set()
+        break  # Sale del ciclo inmediatamente después de declarar ganador
     
   def llegaALaMeta(self) -> bool:
     return self.distanciaRecorrida == self.distanciaCarrera
@@ -68,10 +74,11 @@ class Caballo(Thread):  #Hereda de la clase Thread
 def printPositions():     #Imprime las posiciones de los caballos en el transcurso de la carrera.
   limpiarPantalla()  # Limpia la pantalla antes de imprimir las posiciones
 
-  print(f"Carrera de {len(caballos)} caballos por {distanciaCarrera} metros:\n\n")  # Titulo de la carrera
+  print(f"Carrera de {len(caballos)} caballos por {distanciaCarrera} metros:\n")  # Titulo de la carrera
 
   colorGanador= "\033[33m"  # Amarillo
   reset= "\033[0m"          # Color por defecto
+  verde = "\033[92m"
 
   for caballo in caballos:
     color = colorGanador if caballo.ganador else reset
@@ -79,7 +86,10 @@ def printPositions():     #Imprime las posiciones de los caballos en el transcur
     ganador = " \U0001F947" if caballo.ganador else ""
     print(f"{color}{caballo.nombre} {recorrido} \U0001F3C7{ganador}{reset}")
 
-  print("\n" + "═" * (distanciaCarrera + 10))
+  # --- Línea de meta ---
+  #print(f"\n{verde}{'═' * (distanciaCarrera + 10)} \U0001F3C1 Línea de meta{reset}")
+  print(f"\n{verde}{'Distancia:'+'═' * (distanciaCarrera)} \U0001F3C1 Línea de meta{reset}")
+  #print("\n" + "═" * (distanciaCarrera + 10)+"<- Línea de meta")
 
 def limpiarPantalla():    # Limpiar pantalla
   os.system('cls' if os.name == 'nt' else 'clear')  
