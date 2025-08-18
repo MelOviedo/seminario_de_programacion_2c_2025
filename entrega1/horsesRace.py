@@ -84,11 +84,11 @@ def printPositions():     #Imprime las posiciones de los caballos en el transcur
     color = colorGanador if caballo.ganador else reset
     recorrido = "." * caballo.distanciaRecorrida
     ganador = " \U0001F947" if caballo.ganador else ""
-    print(f"{color}{caballo.nombre} {recorrido} \U0001F3C7{ganador}{reset}")
+    print(f"{color}{caballo.nombre:<12} {recorrido} \U0001F3C7{ganador}{reset}")
 
   # --- Línea de meta ---
   #print(f"\n{verde}{'═' * (distanciaCarrera + 10)} \U0001F3C1 Línea de meta{reset}")
-  print(f"\n{verde}{'Distancia:'+'═' * (distanciaCarrera)} \U0001F3C1 Línea de meta{reset}")
+  print(f"\n{verde}{'Distancia:':<13}{'═' * distanciaCarrera} \U0001F3C1 Línea de meta{reset}")
   #print("\n" + "═" * (distanciaCarrera + 10)+"<- Línea de meta")
 
 def limpiarPantalla():    # Limpiar pantalla
