@@ -2,3 +2,4 @@
 
 ## Entrega 1
 * [Script de carrea de caballos](./entrega1/horsesRace.py)  
+![Carrera de caballos](./photos/image.png)
