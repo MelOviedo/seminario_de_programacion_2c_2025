@@ -1,4 +1,4 @@
-##<center>Banco de Ejercicios</center>
+## <center>📂 Banco de Ejercicios
 
 * [Ejercicio 1](./ejercicio1.py)  
 Escribir en pseudocódigo el primer intento de solución de exclusión mutua (que usa turnos) para N procesos. Opcionalmente, implementarlo en Python o Java.
@@ -11,3 +11,5 @@ Implementar una versión de Bakery para 3 procesos, lo más simple que se pueda.
 
 * [Ejercicio 4](./ejercicio4.py)  
 sort + merge (del modo en que se explicó en la clase).
+
+* [Ejercicio Extra de como funciona el metodo se SortMerge sin usar threads](./sortMerge.py)
