@@ -3,16 +3,13 @@
                                         Ejercicio Primer intento de exclusión mutua
 Enunciado:
   Escribir en pseudocódigo el primer intento de solución de exclusión mutua (que usa turnos) para N
-  procesos. Opcionalmente, implementarlo en Python
-
+  procesos. Opcionalmente, implementarlo en Python.
 ========================================================================================================================================================================================================================================
-
     Seminario de Programación Paralela y Concurrente. UNSAM (Universidad Nacional de San Martin)
 Autora: Mel Oviedo M
 Carrera: TPI.
 Año: 2025
 Fecha límite de entrega: 14/09/2025
-
 ========================================================================================================================================================================================================================================
 '''
 import threading
