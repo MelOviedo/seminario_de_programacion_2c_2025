@@ -8,20 +8,33 @@ Enunciado:
 ========================================================================================================================================================================================================================================
 
     Seminario de Programación Paralela y Concurrente. UNSAM (Universidad Nacional de San Martin)
-Autora: Mel Oviedo
+Autora: Mel Oviedo M
 Carrera: TPI.
 Año: 2025
 Fecha límite de entrega: 14/09/2025
 
 ========================================================================================================================================================================================================================================
 '''
-
 import threading
 import time
 from colorama import Fore, Style, init
 
+init()  # Inicializa colorama 
+# Colores para diferenciar cada proceso
+colores = [Fore.GREEN, 
+           Fore.YELLOW, 
+           Fore.BLUE, 
+           Fore.MAGENTA, 
+           Fore.CYAN, 
+           Fore.RED]
 
-def proceso(i):
+# Variable compartida que indica a quién le toca
+turno = 0
+
+# Lock para evitar que se impriman cosas mezcladas
+imprimir_lock = threading.Lock()
+
+def proceso(i,N):
     global turno
     while True:
         while turno != i:
@@ -45,28 +58,17 @@ def proceso(i):
         time.sleep(1)  # Simula que hace otras tareas
 
 
-init()  # Inicializa colorama 
-# Colores para diferenciar cada proceso
-colores = [Fore.GREEN, 
-           Fore.YELLOW, 
-           Fore.BLUE, 
-           Fore.MAGENTA, 
-           Fore.CYAN, 
-           Fore.RED]
+def main():
+    # Número de procesos 
+    #N = 3
+    N=int(input("Ingrese cantidad de procesos:"))
 
-# Variable compartida que indica a quién le toca
-turno = 0
+    # Creo e inicio los hilos (cada uno representa un proceso)
+    for i in range(N):
+        threading.Thread(target=proceso, args=(i,N), daemon=True).start()
 
-# Lock para evitar que se impriman cosas mezcladas
-imprimir_lock = threading.Lock()
+    # Tiempo de ejercución del programa
+    time.sleep(15)
 
-# Número de procesos 
-#N = 3
-N=int(input("Ingrese cantidad de procesos:"))
-
-# Creo e inicio los hilos (cada uno representa un proceso)
-for i in range(N):
-    threading.Thread(target=proceso, args=(i,), daemon=True).start()
-
-# Tiempo de ejercución del programa
-time.sleep(15)
+if __name__ == "__main__":
+    main()
