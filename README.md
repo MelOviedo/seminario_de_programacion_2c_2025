@@ -9,3 +9,7 @@
 ---
 ## Entrega 2 - Exclusión Mutua   
 * [Listado de ejercicios](./entrega2/README.md)
+
+--- 
+### Trabajo Práctico Final  
+[TPF - Modelado de Operaciones Aritméticas Binarias mediante Redes de Petri](https://github.com/MelOviedo/tpf_seminario_de_programacion_2c_2025)  
