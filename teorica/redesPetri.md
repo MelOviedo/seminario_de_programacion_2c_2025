@@ -35,6 +35,12 @@ Marca el estado activo en ese momento.
 
 <!-- Agregar el diseño de cada componente -->
 <!-- Agregar Secuencias -->
+| Propiedad | Significado | Ejemplo |
+| :---: |:---|:---|
+| **Marcado**| Distribución de tokens en los lugares | p1:1, p2:0 |
+| **Transición habilitada** | Puede dispararse si tiene tokens suficientes en sus lugares de entrada | Si t1 requiere 1 token en p1 y hay 1, se puede disparar |
+| **Disparo (firing)** | Consume tokens de entrada y produce en los lugares de salida | Dispara t1, p1–1, p2+1 |
+
 
 #### Propiedades principales  
 * *Alcanzabilidad*  
@@ -48,6 +54,14 @@ Asegura que no haya desbordes de tokens (nuestras redes son 1-acotadas).
 * *Vivacidad*  
 Garantiza que ninguna transición quede “muerta” (sin posibilidad de disparo).  
 ¿Ninguna transición se queda muerta para siempre?
+
+| Propiedad | Explicación | Ejemplo|
+| :---: | :--- | :--- |
+| **L1 – Vivacidad** | Una transición está **viva** si puede eventualmente ejecutarse (no muerta). | Un proceso que nunca queda bloqueado. |
+| **L2 – Alcanzabilidad** | Un marcado es alcanzable si puede llegarse desde el inicial. | Si de (1,0) → (0,1) es posible, el segundo está alcanzable. |
+| **Acotada** | Hay un número máximo de tokens por lugar. | “Acotada a 3” → ningún lugar tendrá más de 3 tokens. |
+| **Segura (1-acotada)**  | Nunca hay más de 1 token por lugar. | Modela exclusión mutua. |
+| **Libre de bloqueos** | Siempre hay alguna transición habilitada. | No se congela el sistema. |
 
 > [!IMPORTANT]  
 > Tiene que haber un token en cada plaza para que la transición se dispare.  
